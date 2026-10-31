@@ -1,0 +1,75 @@
+
+<div class="XRMode" v-if="activeHUD" @click="startXR()">
+    <h1 v-html="XRMessage"></h1>
+</div>
+
+<div class="wrapper">
+    
+    <div class="click-capture" @click="clickCapture()"></div>
+    
+    <transition name="drift-left">
+    <div class="logo" v-if="!project.active && !contact.active && activeHUD">
+        <div class="inner">
+            <h1>Rowan Findlay</h1>
+            <h2>Creator, Developer, Coder.</h2>
+            <h3>This Website is a Construction zone...</h3>
+        </div>
+    </div>
+    </transition>
+    
+    <transition name="drift-right">
+    <div class="menu" v-if="!project.active && !contact.active && activeHUD">
+        <div v-for="(item, index) in menu.items" :key="index" :class="'item '+item.id">
+            <span @click="menuItemAction(item)">{{item.name}}</span>
+        </div>
+    </div>
+    </transition>
+    
+    <transition name="drift-down">
+    <div v-if="project.active && activeHUD" class="project" :class="{'focus': project.focus}">
+        
+        <div class="frame" v-if="project.iframeURL">
+             <div class="cover" @click="project.focus = true"></div>
+             <iframe :src="project.iframeURL"></iframe>
+        </div>
+        
+        <div class="information" v-if="!project.focus">
+            <div class="content">
+                <h1>{{project.title}}</h1>
+                <h2>{{project.subTitle}}</h2>
+                <p v-for="text in project.bodyText">{{text}}</p>
+            </div>
+            
+            <div class="button back" @click="project.active = false; project.focus = false; menu.items = menu.itemsStash[1].childern"><span>< PROJECTS</span></div>
+        </div>
+        
+    </div>
+    </transition>
+
+    <transition name="drift-down">
+    <div v-if="contact.active && activeHUD" :class="{'expand': contact.expand}" class="contact" @mouseover="contact.expand = true" @mouseleave="contact.expand = false">
+        
+        <div class="content">
+            <a v-for="(item, index) in contact.items" :href="item.link" target="_black">
+                <div class="item" @mouseover="contact.slider = index">
+                    {{item.name}}
+                </div>
+            </a>
+        </div>
+
+        <div class="details">
+            <div class="slider" :style="[{width: contact.items.length + '00vw'}, {left: '-' + contact.slider + '00%'}]">
+                <div class="item" v-for="item in contact.items">
+                    <a :href="item.link" target="_black">
+                        {{item.content}}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="button back" @click="contact.active = false;"><span>< BACK</span></div>
+        
+    </div>
+    </transition>
+    
+</div>

@@ -1,0 +1,411 @@
+body {
+    transition: 2s;
+}
+
+h1 {
+    font-family: 'Major Mono Display', monospace;
+    font-size: 2vmax;
+    line-height: 1.2;
+    margin: 0;
+}
+
+h2 {
+    font-family: 'Major Mono Display', monospace;
+    font-size: .9vmax;
+    line-height: 1.6;
+    margin: 1vmax 0;
+}
+
+p {
+    font-size: 1vmax;
+    line-height: 1.6em;
+    margin: 1vmax 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 200;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#UIApp {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    perspective: 2000px;
+}
+
+#UIApp .click-capture {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#UIApp .logo {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10%;
+    perspective: 1000px;
+}
+
+#UIApp .logo .inner {
+    color: #fff;
+    font-family: 'Major Mono Display', monospace;
+    transform: rotateY(15deg);
+}
+
+#UIApp .logo h1 {
+    font-size: 4vmax;
+    margin: 0;
+}
+
+#UIApp .logo h2 {
+    font-size: 1.9vmax;
+    margin: 1.5vmax 0;
+}
+
+#UIApp .logo h3 {
+    font-size: 1.4vmax;
+    margin-top: 3vmax;
+    margin-bottom: -3vmax;
+    opacity: .2;
+}
+
+#UIApp .menu {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5%;
+    text-align: right;
+    perspective: 1000px;
+}
+
+#UIApp .menu .item {
+    margin: 1.5vmax 0;
+}
+
+#UIApp .menu .item span {
+    display: inline-block;
+    font-size: 3vmax;
+    background: rgb(95 158 160 / 50%);
+    color: #fff;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: .3s;
+    font-family: 'Major Mono Display', monospace;
+    transform-origin: right;
+    transform: rotateY(-15deg);
+}
+
+#UIApp .menu .item span:hover {
+    transform: rotateY(0deg);
+    background: rgb(95 158 160 / 90%);
+}
+
+#UIApp .contact {
+    z-index: 5;
+    position: relative;
+}
+
+#UIApp .project {
+    z-index: 5;
+    position: relative;
+}
+
+#UIApp .project .frame {
+    position: absolute;
+    background: rgb(95 158 160 / 10%);
+    width: 80vw;
+    height: 45vw;
+    border-radius: 1vw;
+    overflow: hidden;
+    transform: scale(.5) translateY(-60%);
+    transition: .3s;
+    transform-origin: top left;
+    top: 50vh;
+    left: 7.5%;
+    z-index: 5;
+}
+
+#UIApp .project.focus .frame {
+    transform: scale(1) translateY(-50%);
+}
+
+#UIApp .project:not(.focus) .frame:hover {
+    transform: scale(.51) translateY(-60%);
+}
+
+#UIApp .project:not(.focus) .frame .cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: pointer;
+}
+
+#UIApp .project iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* #UIApp .project .buttons {
+    display: flex;
+    justify-content: space-between;
+    z-index: 5;
+    position: absolute;
+    top: 3%;
+    width: 92%;
+    left: 4%;
+}
+
+#UIApp .project .buttons .button {
+    perspective: 1000px;
+}
+
+#UIApp .project .buttons .button span {
+    display: inline-block;
+    font-size: 3vmax;
+    background: rgb(95 158 160 / 50%);
+    color: #fff;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: .3s;
+    font-family: 'Major Mono Display', monospace;
+    transform-origin: right;
+    transform: rotateY(-20deg);
+}
+
+#UIApp .project .buttons .button:first-child span {
+    transform-origin: left;
+    transform: rotateY(20deg);
+}
+
+#UIApp .project .buttons .button span:hover {
+    transform: rotateY(0deg);
+    background: rgb(95 158 160 / 90%);
+} */
+
+#UIApp .project .information {
+    z-index: 5;
+    position: absolute;
+    right: 5%;
+    top: 50vh;
+    width: 42.5%;
+    perspective: 1000px;
+    transform: translateY(-50%);
+}
+
+#UIApp .project .information .content {
+    background: rgb(95 158 160 / 50%);
+    color: #fff;
+    padding: 3vw 5vw;
+    transform: rotateY(-7.5deg);
+    max-height: 60vh;
+    overflow-y: scroll;
+    transform-origin: right;
+}
+
+#UIApp .project .information .content::-webkit-scrollbar {
+    width: 1vw;
+}
+
+#UIApp .project .information .content::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+}
+
+#UIApp .project .information .button {
+    text-align: right;
+    margin-top: 2vmax;
+}
+
+#UIApp .project .information .button span,
+#UIApp .contact .button.back span {
+    display: inline-block;
+    font-size: 1.5vmax;
+    background: rgb(95 158 160 / 50%);
+    color: #fff;
+    padding: .8vmax 1.5vmax;
+    cursor: pointer;
+    transition: .3s;
+    font-family: 'Major Mono Display', monospace;
+    transform-origin: right;
+    transform: rotateY(-7.5deg);
+}
+
+#UIApp .project .information .button span:hover,
+#UIApp .contact .button.back span:hover {
+    transform: rotateY(0deg);
+    background: rgb(95 158 160 / 90%);
+}
+
+#UIApp .contact .content {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    display: flex;
+    color: #fff;
+    z-index: 1;
+}
+
+#UIApp .contact .content:hover .item {
+    transform: rotateX(30deg);
+}
+
+#UIApp .contact .content .item {
+    width: 10vmax;
+    height: 10vmax;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: rgb(95 158 160 / 50%);
+    font-family: 'Major Mono Display', monospace;
+    text-transform: uppercase;
+    font-size: 1.2vmax;
+    transform: rotateX(20deg);
+    transform-origin: bottom;
+    transition: .3s;
+    opacity: .8;
+}
+
+#UIApp .contact .content a {
+    margin: 0 1vmax;
+    perspective: 2000px;
+}
+
+#UIApp .contact .content .item:hover {
+    transform: rotateX(0deg) translateY(-5%);
+    opacity: 1;
+}
+
+#UIApp .wrapper .contact .content:hover + .details,
+#UIApp .wrapper .contact .details:hover {
+    transform: translateY(0%);
+    opacity: 1;
+    pointer-events: all;
+}
+
+#UIApp .contact .details {
+    position: absolute;
+    top: 25vh;
+    left: 0;
+    color: #fff;
+    transform: translateY(-200%);
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s;
+    width: 100vw;
+    padding-bottom: 20vh;
+}
+
+#UIApp .contact .details .slider {
+    display: flex;
+    transition: .5s;
+    position: absolute;
+    left: 0;
+}
+
+#UIApp .contact .details .item {
+    font-family: 'Major Mono Display', monospace;
+    text-transform: uppercase;
+    font-size: 2vmax;
+    width: 100vw;
+    text-align: center;
+}
+
+#UIApp .contact .button.back {
+    position: absolute;
+    top: 95vh;
+    left: 50vw;
+    transform: translate(-50%, -100%);
+}
+
+#UIApp .XRMode {
+    position: fixed;
+    z-index: 10;
+    top: 15px;
+    right: 15px;
+    background: rgb(95 158 160 / 50%);
+    color: #fff;
+    padding: 10px 15px;
+    opacity: .5;
+    transition: .3s;
+    cursor: pointer;
+}
+
+#UIApp .XRMode:hover {
+    opacity: 1;
+}
+
+#UIApp .XRMode h1 {
+    font-size: 16px;
+}
+
+.drift-menu-enter-active, .drift-menu-leave-active {
+    transition: .3s;
+    transform: translateX(20%);
+    opacity: 1;
+}
+.drift-menu-enter, .drift-menu-leave-to {
+    transform: translateX(0%);
+    opacity: 0;
+}
+
+.drift-left-enter-active, .drift-left-leave-active {
+    transition: .3s;
+    left: 10% !important;
+    opacity: 1;
+}
+.drift-left-enter, .drift-left-leave-to {
+    left: 0% !important;
+    opacity: 0;
+}
+
+.drift-right-enter-active, .drift-right-leave-active {
+    transition: .3s;
+    right: 5% !important;
+    opacity: 1;
+}
+.drift-right-enter, .drift-right-leave-to {
+    right: 0% !important;
+    opacity: 0;
+}
+
+.drift-down-enter-active, .drift-down-leave-active {
+    transition: .3s;
+    top: 0 !important;
+    opacity: 1;
+}
+.drift-down-enter, .drift-down-leave-to {
+    top: 10vh !important;
+    opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: .3s;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+/* .fade-enter-active .logo, .fade-leave-active .logo {
+  transition: left .5s;
+}
+.fade-enter .logo, .fade-leave-to .logo {
+  left: 0%;
+} */
